@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import globalStyles from '../styles';
 
 const NuevoPresupuesto = ({ handleNuevoPresupuesto }) => {
   const [presupuesto, setPresupuesto] = useState(0);
@@ -29,28 +30,31 @@ const NuevoPresupuesto = ({ handleNuevoPresupuesto }) => {
 
 const styles = StyleSheet.create({
   contenedor: {
-    backgroundColor: '#FFF',
-    marginHorizontal: 10,
-    borderRadius: 10,
-    paddingVertical: 40,
-    paddingHorizontal: 20,
-    transform: [{ translateY: 50 }], // Esto encima el contenedor, para que este como arriba y abajo a la vez
-    // Sombras: https://ethercreative.github.io/react-native-shadow-generator/
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
+    // backgroundColor: '#FFF',
+    // marginHorizontal: 10,
+    // borderRadius: 10,
+    // paddingVertical: 40,
+    // paddingHorizontal: 20,
+    // transform: [{ translateY: 50 }], // Esto encima el contenedor, para que este como arriba y abajo a la vez
+    // // Sombras: https://ethercreative.github.io/react-native-shadow-generator/
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.23,
+    // shadowRadius: 2.62,
 
-    elevation: 4,
+    // elevation: 4,
+
+    // De esta forma usamos un estilo que estamos importando y funciona para reutilizarlo
+    ...globalStyles.contenedor,
   },
 
   label: {
     textAlign: 'center',
     fontSize: 24,
-    color: '#3B82F6'
+    color: '#3B82F6',
   },
 
   input: {
@@ -58,21 +62,21 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     textAlign: 'center',
-    marginTop: 30
+    marginTop: 30,
   },
 
   boton: {
     backgroundColor: '#1048A4',
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
   },
 
   botonTexto: {
     color: '#FFF',
     textAlign: 'center',
     textTransform: 'uppercase',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export default NuevoPresupuesto;
