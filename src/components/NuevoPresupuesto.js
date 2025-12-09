@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import globalStyles from '../styles';
 
-const NuevoPresupuesto = ({ handleNuevoPresupuesto }) => {
-  const [presupuesto, setPresupuesto] = useState(0);
+const NuevoPresupuesto = ({
+  presupuesto,
+  setPresupuesto,
+  handleNuevoPresupuesto,
+}) => {
+  // const [presupuesto, setPresupuesto] = useState(0);
 
   return (
     <View style={styles.contenedor}>
@@ -15,7 +19,6 @@ const NuevoPresupuesto = ({ handleNuevoPresupuesto }) => {
         style={styles.input}
         value={presupuesto.toString()}
         onChangeText={setPresupuesto}
-        
       />
 
       <Pressable

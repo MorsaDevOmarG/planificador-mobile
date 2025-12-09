@@ -7,6 +7,7 @@ import ControlPresupuesto from './src/components/ControlPresupuesto';
 
 const App = () => {
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
+  const [presupuesto, setPresupuesto] = useState(0);
 
   const handleNuevoPresupuesto = (presupuesto) => {
     // console.log('Desde app', presupuesto);
@@ -20,7 +21,7 @@ const App = () => {
 
       Alert.alert(
         'Error',
-        'El presupuesto no puede ser 0',
+        'El presupuesto no puede ser: "0" o menor',
         [{texto: 'Ok'}]
       )
     }
@@ -38,10 +39,16 @@ const App = () => {
         {
           isValidPresupuesto
             ? (
-              <ControlPresupuesto />
+              <ControlPresupuesto
+                presupuesto={presupuesto}
+              />
             )
             : (
-              <NuevoPresupuesto handleNuevoPresupuesto={handleNuevoPresupuesto}/>
+              <NuevoPresupuesto
+                presupuesto={presupuesto}
+                setPresupuesto={setPresupuesto}
+                handleNuevoPresupuesto={handleNuevoPresupuesto}
+              />
             )
         }
       </View>
