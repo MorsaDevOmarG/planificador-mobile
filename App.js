@@ -1,16 +1,33 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Alert, SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
 
-function App() {
+const App = () => {
+  const handleNuevoPresupuesto = (presupuesto) => {
+    // console.log('Desde app', presupuesto);
+
+    if (Number(presupuesto) > 0) {
+      console.log('Válido');
+    } else {
+      // console.log('Inválido');
+
+      Alert.alert(
+        'Error',
+        'El presupuesto no puede ser 0',
+        [{texto: 'Ok'}]
+      )
+    }
+  };
 
   return (
     <View style={styles.contenedor}>
       <View style={styles.header}>
         <Header />
 
-        <NuevoPresupuesto />
+        <NuevoPresupuesto
+          handleNuevoPresupuesto={handleNuevoPresupuesto}
+        />
       </View>
     </View>
   );
