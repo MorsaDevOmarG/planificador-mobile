@@ -5,8 +5,11 @@ import globalStyles from '../styles'
 const ControlPresupuesto = () => {
   return (
     <View style={styles.contenedor}>
-      <View>
-        <Image source={require('../img/grafico.jpg')} />
+      <View style={styles.centrarGrafica}>
+        <Image
+          style={styles.imagen}
+          source={require('../img/grafico.jpg')}
+        />
       </View>
     </View>
   );
@@ -32,8 +35,17 @@ const styles = StyleSheet.create({
     // elevation: 4,
 
     // De esta forma usamos un estilo que estamos importando y funciona para reutilizarlo
-    ...globalStyles.contenedor
+    ...globalStyles.contenedor,
   },
+
+  centrarGrafica: {
+    alignItems: 'center'
+  },
+
+  imagen: {
+    width: 250,
+    height: 250
+  }
 });
 
 export default ControlPresupuesto;
