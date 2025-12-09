@@ -1,14 +1,20 @@
 import { Alert, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
 
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
+import ControlPresupuesto from './src/components/ControlPresupuesto';
 
 const App = () => {
+  const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
+
   const handleNuevoPresupuesto = (presupuesto) => {
     // console.log('Desde app', presupuesto);
 
     if (Number(presupuesto) > 0) {
-      console.log('Válido');
+      // console.log('Válido');
+
+      setIsValidPresupuesto(true);
     } else {
       // console.log('Inválido');
 
@@ -25,9 +31,19 @@ const App = () => {
       <View style={styles.header}>
         <Header />
 
-        <NuevoPresupuesto
+        {/* <NuevoPresupuesto
           handleNuevoPresupuesto={handleNuevoPresupuesto}
-        />
+        /> */}
+
+        {
+          isValidPresupuesto
+            ? (
+              <ControlPresupuesto />
+            )
+            : (
+              <NuevoPresupuesto handleNuevoPresupuesto={handleNuevoPresupuesto}/>
+            )
+        }
       </View>
     </View>
   );

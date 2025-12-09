@@ -19,7 +19,7 @@ const NuevoPresupuesto = ({ handleNuevoPresupuesto }) => {
 
       <Pressable
         style={styles.boton}
-        onPress={handleNuevoPresupuesto(presupuesto)}
+        onPress={() => handleNuevoPresupuesto(presupuesto)}
       >
         <Text style={styles.botonTexto}>Agregar Presupuesto</Text>
       </Pressable>
