@@ -1,36 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import globalStyles from '../styles';
 import { formatearCantidad } from '../helpers';
 
-const ControlPresupuesto = ({ presupuesto}) => {
+const ControlPresupuesto = ({ presupuesto, gastos }) => {
+  const [disponible, setDisponible] = useState(0);
+  const [gastado, setGastado] = useState(0);
+
+  useEffect(() => {
+    const totalGastado = gastos.reduce(
+      (total, gasto) => Number(gasto.cantidad) + total, 0
+    );
+    // console.log(totalGastado);
+
+    const totalDisponible = presupuesto - totalGastado;
+    // console.log(totalDisponible);
+
+    setGastado(totalGastado);
+    setDisponible(totalDisponible);
+  }, []);
+
   return (
     <View style={styles.contenedor}>
       <View style={styles.centrarGrafica}>
-        <Image
-          style={styles.imagen}
-          source={require('../img/grafico.jpg')}
-        />
+        <Image style={styles.imagen} source={require('../img/grafico.jpg')} />
       </View>
 
       <View style={styles.contenedorTexto}>
         <Text style={styles.valor}>
-          <Text style={styles.label}>Presupuesto: </Text>
+          <Text style={styles.label}>Presupuesto: {''} </Text>
 
           {/* {presupuesto} */}
           {formatearCantidad(presupuesto)}
         </Text>
 
         <Text style={styles.valor}>
-          <Text style={styles.label}>Disponible: </Text>
+          <Text style={styles.label}>Disponible: {''} </Text>
 
-          {formatearCantidad(presupuesto)}
+          {formatearCantidad(disponible)}
         </Text>
 
         <Text style={styles.valor}>
-          <Text style={styles.label}>Gastado: </Text>
+          <Text style={styles.label}>Gastado: {''} </Text>
 
-          {formatearCantidad(presupuesto)}
+          {formatearCantidad(gastado)}
         </Text>
       </View>
     </View>
