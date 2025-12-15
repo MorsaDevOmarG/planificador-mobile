@@ -1,7 +1,7 @@
 # App Planificador de Presupuestos
 
 - Creación del proyecto:
-    - `npx react-native init MiProyecto --version 0.70`
+    - **_`npx react-native init MiProyecto --version 0.70`_**
 - Nuevas versiones:
   - **_npx @react-native-community/cli init primerProyecto_**
 
@@ -27,7 +27,7 @@
 1. Sombras
     - ethercreative.github.io/react-native-shadow-generator/
 1. Picker
-    - `npm install @react-native-picker/picker --save`
+    - **_`npm install @react-native-picker/picker --save`_**
     - **Nota**: después de ejcutar el PICKER, tenemos que cerrar y abrir de nuevo el emulador:
         - `npx react-native run-android`
 1. 
