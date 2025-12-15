@@ -1,9 +1,10 @@
-import { Alert, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, Modal, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
 
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
 import ControlPresupuesto from './src/components/ControlPresupuesto';
+import FormularioGasto from './src/components/FormularioGasto';
 
 const App = () => {
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
@@ -14,6 +15,7 @@ const App = () => {
   //   { id: 3, cantidad: 50 },
   // ]);
   const [gastos, setGastos] = useState([]);
+  const [modal, setModal] = useState(false);
 
   const handleNuevoPresupuesto = (presupuesto) => {
     // console.log('Desde app', presupuesto);
@@ -61,8 +63,23 @@ const App = () => {
       </View>
 
       {
+        modal && (
+          <Modal
+            animationType="slide"
+            visible={modal}
+          >
+            <FormularioGasto
+            
+            />
+          </Modal>
+        )
+      }
+
+      {
         isValidPresupuesto && (
-          <Pressable>
+          <Pressable
+            onPress={() => setModal(true)}
+          >
             <Image
               style={styles.imagen}
               source={require('./src/img/nuevo-gasto.png')}
@@ -88,7 +105,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    top: 120,
+    top: 40,
     right: 20
   }
 });
