@@ -69,7 +69,7 @@ const App = () => {
             visible={modal}
           >
             <FormularioGasto
-            
+              setModal={setModal}
             />
           </Modal>
         )
