@@ -50,3 +50,8 @@
     - .getItem: Obtener elementos.
     - .removeItem: Eliminar un elemento.
     - .clear: Limpia todo el contenido.
+
+### NOTAS
+1. En un _MODAL_, siempre siempre es recomendable utilizar:
+  - **_onRequestClose_**
+1. Esto con la finalidad de tener una experiencia de usuario buena y aparte cuando toca el botón de _back_, cierra el _MODAL_.
