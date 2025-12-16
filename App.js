@@ -35,6 +35,24 @@ const App = () => {
     }
   };
 
+  const handleGasto = gasto => {
+    // console.log('Gasto', gasto);
+
+    // keys: lee los valores de la izquierda
+    // values: lee los valores de la derecha
+
+    if (Object.values(gasto).includes('')) {
+      // console.log('Campos vacíos');
+
+      Alert.alert(
+        'Error',
+        'Todos los campos son obligatorios'
+      );
+    } else {
+      console.log('Formulario completo');
+    }
+  };
+
   return (
     <View style={styles.contenedor}>
       <View style={styles.header}>
@@ -73,6 +91,7 @@ const App = () => {
           >
             <FormularioGasto
               setModal={setModal}
+              handleGasto={handleGasto}
             />
           </Modal>
         )

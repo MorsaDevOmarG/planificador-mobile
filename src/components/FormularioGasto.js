@@ -3,7 +3,7 @@ import { Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'reac
 import { Picker } from '@react-native-picker/picker';
 import globalStyles from '../styles';
 
-const FormularioGasto = ({ setModal }) => {
+const FormularioGasto = ({ setModal, handleGasto }) => {
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -50,8 +50,8 @@ const FormularioGasto = ({ setModal }) => {
 
           <Picker
             selectedValue={categoria}
-            onValueChange={(valor) => {
-              setCategoria(valor)
+            onValueChange={valor => {
+              setCategoria(valor);
             }}
           >
             <Picker.Item label="-- Seleccione --" value="" />
@@ -65,7 +65,14 @@ const FormularioGasto = ({ setModal }) => {
           </Picker>
         </View>
 
-        <Pressable style={styles.submitBtn}>
+        <Pressable
+          style={styles.submitBtn}
+          onPress={() => handleGasto({
+            nombre,
+            cantidad,
+            categoria
+          })}
+        >
           <Text style={styles.submitBtnTexto}>Agregar Gasto</Text>
         </Pressable>
       </View>
