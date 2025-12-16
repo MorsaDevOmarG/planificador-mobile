@@ -1,10 +1,10 @@
 import { Alert, Image, Modal, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
-
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
 import ControlPresupuesto from './src/components/ControlPresupuesto';
 import FormularioGasto from './src/components/FormularioGasto';
+import { generarId } from "./src/helpers";
 
 const App = () => {
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
@@ -48,9 +48,15 @@ const App = () => {
         'Error',
         'Todos los campos son obligatorios'
       );
-    } else {
-      console.log('Formulario completo');
+
+      return;
     }
+
+    // Añadir el nuevo gasto al STATE
+    gasto.id = generarId();
+
+    setGastos([...gastos, gasto]);
+    setModal(false);
   };
 
   return (
