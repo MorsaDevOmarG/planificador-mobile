@@ -58,7 +58,7 @@ const FormularioGasto = ({ setModal, handleGasto }) => {
             <Picker.Item label="Ahorro" value="ahorro" />
             <Picker.Item label="Comida" value="comida" />
             <Picker.Item label="Casa" value="casa" />
-            <Picker.Item label="Gastos Varos" value="gastos" />
+            <Picker.Item label="Gastos Varios" value="gastos" />
             <Picker.Item label="Ocio" value="ocio" />
             <Picker.Item label="Salud" value="salud" />
             <Picker.Item label="Suscripciones" value="suscripciones" />
