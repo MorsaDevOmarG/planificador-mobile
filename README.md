@@ -55,3 +55,4 @@
 1. En un _MODAL_, siempre siempre es recomendable utilizar:
   - **_onRequestClose_**
 1. Esto con la finalidad de tener una experiencia de usuario buena y aparte cuando toca el botón de _back_, cierra el _MODAL_.
+1. No podemos mezclar _SCROLL VIEW_ con **FLATLIST**

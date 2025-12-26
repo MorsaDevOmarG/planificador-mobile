@@ -89,7 +89,9 @@ const App = () => {
 
       {
         isValidPresupuesto && (
-          <ListadoGastos />
+          <ListadoGastos
+            gastos={gastos}
+          />
         )
       }
 
