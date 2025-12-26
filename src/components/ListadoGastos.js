@@ -11,7 +11,10 @@ const ListadoGastos = ({ gastos }) => {
         <Text style={styles.titulo}>No hay gastos aún</Text>
       ) : (
           gastos.map(gasto => (
-          <Gasto />
+            <Gasto
+              key={gasto.id}
+              gasto={gasto}
+            />
         ))
       )}
     </View>
@@ -20,18 +23,20 @@ const ListadoGastos = ({ gastos }) => {
 
 const styles = StyleSheet.create({
   contenedor: {
-    marginTop: 70,
+    marginVertical: 70,
+    marginBottom: 100,
   },
 
   titulo: {
     color: '#64748B',
     fontSize: 30,
     textAlign: 'center',
+    marginTop: 20
   },
 
   noGastos: {
     textAlign: 'center',
-    marginTop: 20,
+    marginVertical: 20,
     fontSize: 20,
   },
 });

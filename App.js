@@ -1,4 +1,4 @@
-import { Alert, Image, Modal, Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
@@ -62,69 +62,48 @@ const App = () => {
 
   return (
     <View style={styles.contenedor}>
-      <View style={styles.header}>
-        <Header />
+      <ScrollView>
+        <View style={styles.header}>
+          <Header />
 
-        {/* <NuevoPresupuesto
+          {/* <NuevoPresupuesto
           handleNuevoPresupuesto={handleNuevoPresupuesto}
         /> */}
 
-        {
-          isValidPresupuesto
-            ? (
-              <ControlPresupuesto
-                presupuesto={presupuesto}
-                gastos={gastos}
-              />
-            )
-            : (
-              <NuevoPresupuesto
-                presupuesto={presupuesto}
-                setPresupuesto={setPresupuesto}
-                handleNuevoPresupuesto={handleNuevoPresupuesto}
-              />
-            )
-        }
-      </View>
+          {isValidPresupuesto ? (
+            <ControlPresupuesto presupuesto={presupuesto} gastos={gastos} />
+          ) : (
+            <NuevoPresupuesto
+              presupuesto={presupuesto}
+              setPresupuesto={setPresupuesto}
+              handleNuevoPresupuesto={handleNuevoPresupuesto}
+            />
+          )}
+        </View>
 
-      {
-        isValidPresupuesto && (
-          <ListadoGastos
-            gastos={gastos}
+        {isValidPresupuesto && <ListadoGastos gastos={gastos} />}
+      </ScrollView>
+
+      {modal && (
+        <Modal
+          animationType="slide"
+          visible={modal}
+          onRequestClose={() => {
+            setModal(false);
+          }}
+        >
+          <FormularioGasto setModal={setModal} handleGasto={handleGasto} />
+        </Modal>
+      )}
+
+      {isValidPresupuesto && (
+        <Pressable onPress={() => setModal(true)} style={styles.pressable}>
+          <Image
+            style={styles.imagen}
+            source={require('./src/img/nuevo-gasto.png')}
           />
-        )
-      }
-
-      {
-        modal && (
-          <Modal
-            animationType="slide"
-            visible={modal}
-            onRequestClose={() => {
-              setModal(false)
-            }}
-          >
-            <FormularioGasto
-              setModal={setModal}
-              handleGasto={handleGasto}
-            />
-          </Modal>
-        )
-      }
-
-      {
-        isValidPresupuesto && (
-          <Pressable
-            onPress={() => setModal(true)}
-            style={styles.pressable}
-          >
-            <Image
-              style={styles.imagen}
-              source={require('./src/img/nuevo-gasto.png')}
-            />
-          </Pressable>
-        )
-      }
+        </Pressable>
+      )}
     </View>
   );
 };
@@ -137,6 +116,7 @@ const styles = StyleSheet.create({
 
   header: {
     backgroundColor: '#3B82F6',
+    minHeight: 400,
   },
 
   pressable: {
@@ -146,8 +126,8 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     position: 'absolute',
-    top: 10,
-    right: 20
+    bottom: 40,
+    right: 30
   }
 });
 
