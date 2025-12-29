@@ -51,7 +51,8 @@ const App = () => {
     // keys: lee los valores de la izquierda
     // values: lee los valores de la derecha
 
-    if (Object.values(gasto).includes('')) {
+    // if (Object.values(gasto).includes('')) {
+    if ([gasto.nombre, gasto.cantidad, gasto.categoria].includes('')) {
       // console.log('Campos vacíos');
 
       Alert.alert('Error', 'Todos los campos son obligatorios');
@@ -59,11 +60,21 @@ const App = () => {
       return;
     }
 
-    // Añadir el nuevo gasto al STATE
-    gasto.id = generarId();
-    gasto.fecha = Date.now();
+    if (gasto.id) {
+      // Editando el gasto
+      const gastosActualizados = gastos.map(gastoState =>
+        gastoState.id === gasto.id ? gasto : gastoState
+      );
+      
+      setGastos(gastosActualizados);
+    } else {
+      // Añadir el nuevo gasto al STATE
+      gasto.id = generarId();
+      gasto.fecha = Date.now();
 
-    setGastos([...gastos, gasto]);
+      setGastos([...gastos, gasto]);
+    }
+
     setModal(false);
   };
 
