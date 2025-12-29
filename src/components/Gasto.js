@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import globalStyles from '../styles';
 import { formatearCantidad, formatearFecha } from '../helpers';
 
@@ -13,25 +13,38 @@ const diccionarioIconos = {
   suscripciones: require('../img/icono_suscripciones.png'),
 };
 
-const Gasto = ({ gasto }) => {
+const Gasto = ({ gasto, setModal, setGasto }) => {
   const { nombre, categoria, cantidad, fecha } = gasto;
 
+  const handleAcciones = () => {
+    setModal(true);
+
+    setGasto(gasto);
+  };
+
   return (
-    <View style={styles.contenedor}>
-      <View style={styles.contenido}>
-        <View style={styles.contenedorImagen}>
-          <Image source={diccionarioIconos[categoria]} style={styles.imagen} />
+    <Pressable
+      onLongPress={handleAcciones}
+    >
+      <View style={styles.contenedor}>
+        <View style={styles.contenido}>
+          <View style={styles.contenedorImagen}>
+            <Image
+              source={diccionarioIconos[categoria]}
+              style={styles.imagen}
+            />
 
-          <View style={styles.contenedorTexto}>
-            <Text style={styles.categoria}>{categoria}</Text>
-            <Text style={styles.nombre}>{nombre}</Text>
-            <Text style={styles.fecha}>{formatearFecha(fecha)}</Text>
+            <View style={styles.contenedorTexto}>
+              <Text style={styles.categoria}>{categoria}</Text>
+              <Text style={styles.nombre}>{nombre}</Text>
+              <Text style={styles.fecha}>{formatearFecha(fecha)}</Text>
+            </View>
           </View>
-        </View>
 
-        <Text style={styles.cantidad}>{formatearCantidad(cantidad)}</Text>
+          <Text style={styles.cantidad}>{formatearCantidad(cantidad)}</Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

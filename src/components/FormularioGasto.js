@@ -3,7 +3,7 @@ import { Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'reac
 import { Picker } from '@react-native-picker/picker';
 import globalStyles from '../styles';
 
-const FormularioGasto = ({ setModal, handleGasto }) => {
+const FormularioGasto = ({ setModal, handleGasto, setGasto }) => {
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -13,7 +13,10 @@ const FormularioGasto = ({ setModal, handleGasto }) => {
       <View>
         <Pressable
           style={styles.btnCancelar}
-          onLongPress={() => setModal(false)}
+          onLongPress={() => {
+            setModal(false);
+            setGasto({});
+          }}
         >
           <Text style={styles.btnCancelarTexto}>Cancelar</Text>
         </Pressable>
