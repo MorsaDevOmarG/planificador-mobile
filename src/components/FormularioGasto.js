@@ -24,15 +24,22 @@ const FormularioGasto = ({ setModal, handleGasto, gasto, setGasto }) => {
 
   return (
     <SafeAreaView style={styles.contenedor}>
-      <View>
+      <View style={styles.contenedorBotones}>
         <Pressable
-          style={styles.btnCancelar}
+          style={[styles.btn, styles.btnCancelar]}
           onLongPress={() => {
             setModal(false);
             setGasto({});
           }}
         >
-          <Text style={styles.btnCancelarTexto}>Cancelar</Text>
+          <Text style={styles.btnTexto}>Cancelar</Text>
+        </Pressable>
+
+        <Pressable
+          style={[styles.btn, styles.btnEliminar]}
+          onLongPress={() => {}}
+        >
+          <Text style={styles.btnTexto}>Eliminar</Text>
         </Pressable>
       </View>
 
@@ -86,13 +93,15 @@ const FormularioGasto = ({ setModal, handleGasto, gasto, setGasto }) => {
 
         <Pressable
           style={styles.submitBtn}
-          onPress={() => handleGasto({
-            nombre,
-            cantidad,
-            categoria,
-            id,
-            fecha
-          })}
+          onPress={() =>
+            handleGasto({
+              nombre,
+              cantidad,
+              categoria,
+              id,
+              fecha,
+            })
+          }
         >
           <Text style={styles.submitBtnTexto}>
             {gasto?.nombre ? 'Editar Gasto' : 'Agregar Gasto'}
@@ -109,18 +118,32 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  btnCancelar: {
-    backgroundColor: '#DB2777',
-    padding: 10,
-    marginTop: 30,
-    marginHorizontal: 10
+  contenedorBotones: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    
   },
 
-  btnCancelarTexto: {
+  btn: {
+    padding: 10,
+    marginTop: 30,
+    marginHorizontal: 10,
+    flex: 1,
+  },
+
+  btnCancelar: {
+    backgroundColor: '#DB2777',
+  },
+
+  btnEliminar: {
+    backgroundColor: 'red',
+  },
+
+  btnTexto: {
     textTransform: 'uppercase',
     fontWeight: 'bold',
     color: '#FFF',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 
   formulario: {
@@ -149,21 +172,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     padding: 10,
     borderRadius: 10,
-    marginTop: 10
+    marginTop: 10,
   },
 
   submitBtn: {
     backgroundColor: '#3B82F6',
     padding: 10,
-    marginTop: 20
+    marginTop: 20,
   },
 
   submitBtnTexto: {
     textAlign: 'center',
     color: '#FFF',
     fontWeight: 'bold',
-    textTransform: 'uppercase'
-  }
+    textTransform: 'uppercase',
+  },
 });
 
 export default FormularioGasto;
