@@ -63,6 +63,8 @@
 
 1. Esto con la finalidad de tener una experiencia de usuario buena y aparte cuando toca el botón de _back_, cierra el _MODAL_.
 1. No podemos mezclar _SCROLL VIEW_ con **FLATLIST**
-1. En Visual Studio Code, tenemos que habilitar una función:
+1. En Visual Studio Code, tenemos que habilitar una función para que nos realice _React_, importaciones:
    - _Settings_
-     - Buscamos: **enable import**, debemos activarlo en caso que no lo este.
+     - Buscamos:
+       - **enable import**, debemos activarlo en caso que no lo este.
+       - **javascript import**, es la primera opción, debemos tener: _shortest_-
