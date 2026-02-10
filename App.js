@@ -63,9 +63,9 @@ const App = () => {
     if (gasto.id) {
       // Editando el gasto
       const gastosActualizados = gastos.map(gastoState =>
-        gastoState.id === gasto.id ? gasto : gastoState
+        gastoState.id === gasto.id ? gasto : gastoState,
       );
-      
+
       setGastos(gastosActualizados);
     } else {
       // Añadir el nuevo gasto al STATE
@@ -76,6 +76,36 @@ const App = () => {
     }
 
     setModal(false);
+  };
+
+  const eliminarGasto = id => {
+    // console.log('Eliminando: ', id);
+
+    Alert.alert(
+      '¿Deseas eliminar este gasto?',
+      'Un gasto eliminado no se puede recuperar',
+      [
+        {
+          text: 'No',
+          style: 'cancel',
+        },
+        {
+          text: 'Si, Eliminar',
+          // style: 'default',
+          onPress: () => {
+            // console.log('Eliminando: ', id);
+
+            const gastosActualizados = gastos.filter(
+              gastoState => gastoState.id !== id,
+            );
+
+            setGastos(gastosActualizados);
+            setModal(false);
+            setGasto({});
+          },
+        },
+      ],
+    );
   };
 
   return (
@@ -121,6 +151,7 @@ const App = () => {
             handleGasto={handleGasto}
             gasto={gasto}
             setGasto={setGasto}
+            eliminarGasto={eliminarGasto}
           />
         </Modal>
       )}

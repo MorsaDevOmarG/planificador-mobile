@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import globalStyles from '../styles';
 
-const FormularioGasto = ({ setModal, handleGasto, gasto, setGasto }) => {
+const FormularioGasto = ({
+  setModal,
+  handleGasto,
+  gasto,
+  setGasto,
+  eliminarGasto,
+}) => {
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -37,7 +50,9 @@ const FormularioGasto = ({ setModal, handleGasto, gasto, setGasto }) => {
 
         <Pressable
           style={[styles.btn, styles.btnEliminar]}
-          onLongPress={() => {}}
+          onLongPress={() => {
+            eliminarGasto(id);
+          }}
         >
           <Text style={styles.btnTexto}>Eliminar</Text>
         </Pressable>
@@ -121,7 +136,6 @@ const styles = StyleSheet.create({
   contenedorBotones: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    
   },
 
   btn: {
