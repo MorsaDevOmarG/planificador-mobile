@@ -25,6 +25,8 @@
    - **_npm i react-native-circular-progress-indicator_**
 1. Reanimated:
    - **_npm i react-native-reanimated_**
+     1. Si marca error, debemos instalar:
+        - **_npm i react-native-reanimated@3.0.0-rc.0_**
 1. Svg
    - **_npm i react-native-svg_**
 
