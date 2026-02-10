@@ -179,14 +179,20 @@ const styles = StyleSheet.create({
     minHeight: 400,
   },
 
-  pressable: {},
-
-  imagen: {
+  pressable: {
     width: 60,
     height: 60,
     position: 'absolute',
     bottom: 40,
     right: 30,
+  },
+
+  imagen: {
+    width: 60,
+    height: 60,
+    // position: 'absolute',
+    // bottom: 40,
+    // right: 30,
   },
 });
 
