@@ -21,6 +21,12 @@
    - nos ayuda a debuguear la app
 1. Async Storage
    - `npm install @react-native-async-storage/async-storage`
+1. Circular Progress Indicator
+   - **_npm i react-native-circular-progress-indicator_**
+1. Reanimated:
+   - **_npm i react-native-reanimated_**
+1. Svg
+   - **_npm i react-native-svg_**
 
 ### Tecnologías
 
