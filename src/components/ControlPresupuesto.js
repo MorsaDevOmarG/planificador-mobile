@@ -6,6 +6,7 @@ import { formatearCantidad } from '../helpers';
 const ControlPresupuesto = ({ presupuesto, gastos }) => {
   const [disponible, setDisponible] = useState(0);
   const [gastado, setGastado] = useState(0);
+  const [porcentaje, setPorcentaje] = useState(0);
 
   useEffect(() => {
     const totalGastado = gastos.reduce(
@@ -17,6 +18,13 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
     const totalDisponible = presupuesto - totalGastado;
     // console.log(totalDisponible);
 
+    const nuevoPorcentaje =
+      ((presupuesto - totalDisponible) / presupuesto) * 100;
+
+    setTimeout(() => {
+      setPorcentaje(nuevoPorcentaje);
+    }, 1000);
+
     setGastado(totalGastado);
     setDisponible(totalDisponible);
   }, [gastos]);
@@ -26,7 +34,22 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
       <View style={styles.centrarGrafica}>
         <Image style={styles.imagen} source={require('../img/grafico.jpg')} />
 
-        {/* <CircularProgress value={50} radius={150} duration={1000} valueSuffix={'%} title='Gastado' inActveStrokeColor='#F5F5F5' inActiveStrokeWidth={20} activeStrokeColor='#3B82F6' activeStrokeWidth={20} titleStyle={{  fontWeith: 'bold', fonSize: 20 }} titleColor='64748B' /> */}
+        {/*   
+          <CircularProgress 
+            //value={50} 
+            value={porcentaje} 
+            radius={150}             
+            duration={1000}            
+            valueSuffix={'%}            
+            title='Gastado' 
+            inActveStrokeColor='#F5F5F5' 
+            inActiveStrokeWidth={20} 
+            activeStrokeColor='#3B82F6' 
+            activeStrokeWidth={20} 
+            titleStyle={{  fontWeith: 'bold', fonSize: 20 }}
+            titleColor='64748B' 
+            /> 
+        */}
       </View>
 
       <View style={styles.contenedorTexto}>
@@ -47,6 +70,10 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
           <Text style={styles.label}>Gastado: {''} </Text>
 
           {formatearCantidad(gastado)}
+        </Text>
+
+        <Text style={styles.valor}>
+          <Text style={styles.label}>Porcentaje: {''}</Text>%{porcentaje}
         </Text>
       </View>
     </View>
