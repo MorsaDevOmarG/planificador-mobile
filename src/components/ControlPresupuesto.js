@@ -9,7 +9,8 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
 
   useEffect(() => {
     const totalGastado = gastos.reduce(
-      (total, gasto) => Number(gasto.cantidad) + total, 0
+      (total, gasto) => Number(gasto.cantidad) + total,
+      0,
     );
     // console.log(totalGastado);
 
@@ -24,6 +25,8 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
     <View style={styles.contenedor}>
       <View style={styles.centrarGrafica}>
         <Image style={styles.imagen} source={require('../img/grafico.jpg')} />
+
+        {/* <CircularProgress value={50} radius={150} duration={1000} valueSuffix={'%} title='Gastado' inActveStrokeColor='#F5F5F5' inActiveStrokeWidth={20} activeStrokeColor='#3B82F6' activeStrokeWidth={20} titleStyle={{  fontWeith: 'bold', fonSize: 20 }} titleColor='64748B' /> */}
       </View>
 
       <View style={styles.contenedorTexto}>
@@ -74,28 +77,28 @@ const styles = StyleSheet.create({
   },
 
   centrarGrafica: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   imagen: {
     width: 250,
-    height: 250
+    height: 250,
   },
 
   contenedorTexto: {
-    marginTop: 50
+    marginTop: 50,
   },
 
   valor: {
     fontSize: 24,
     textAlign: 'center',
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   label: {
     fontWeight: '700',
-    color: '#3B82F6'
-  }
+    color: '#3B82F6',
+  },
 });
 
 export default ControlPresupuesto;
