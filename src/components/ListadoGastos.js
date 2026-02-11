@@ -10,13 +10,13 @@ const ListadoGastos = ({ gastos, setModal, setGasto }) => {
       {gastos.length === 0 ? (
         <Text style={styles.titulo}>No hay gastos aún</Text>
       ) : (
-          gastos.map(gasto => (
-            <Gasto
-              key={gasto.id}
-              gasto={gasto}
-              setModal={setModal}
-              setGasto={setGasto}
-            />
+        gastos.map(gasto => (
+          <Gasto
+            key={gasto.id}
+            gasto={gasto}
+            setModal={setModal}
+            setGasto={setGasto}
+          />
         ))
       )}
     </View>
@@ -25,7 +25,8 @@ const ListadoGastos = ({ gastos, setModal, setGasto }) => {
 
 const styles = StyleSheet.create({
   contenedor: {
-    marginVertical: 70,
+    // marginVertical: 70,
+    marginTop: 30,
     marginBottom: 100,
   },
 
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     color: '#64748B',
     fontSize: 30,
     textAlign: 'center',
-    marginTop: 20
+    marginTop: 20,
   },
 
   noGastos: {
