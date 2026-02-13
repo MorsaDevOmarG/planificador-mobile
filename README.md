@@ -30,6 +30,7 @@
 1. Svg
    - **_npm i react-native-svg_**
 1. Async Storage
+   - **_npm install @react-native-async-storage/async-storage_**
 
 - Es como _LocalStorage_ pero en _mobile_-
 

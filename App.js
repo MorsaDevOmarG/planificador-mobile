@@ -9,7 +9,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './src/components/Header';
 import NuevoPresupuesto from './src/components/NuevoPresupuesto';
 import ControlPresupuesto from './src/components/ControlPresupuesto';
@@ -17,6 +17,7 @@ import FormularioGasto from './src/components/FormularioGasto';
 import ListadoGastos from './src/components/ListadoGastos';
 import Filtro from './src/components/Filtro';
 import { generarId } from './src/helpers';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const App = () => {
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
@@ -31,6 +32,20 @@ const App = () => {
   const [gasto, setGasto] = useState({});
   const [filtro, setFiltro] = useState('');
   const [gastosFiltrados, setGastosFiltrados] = useState([]);
+
+  useEffect(() => {
+    if (isValidPresupuesto) {
+      const guardarPresupuestoStorage = async () => {
+        try {
+          await AsyncStorage.setItem('planificador_presupuesto', presupuesto);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      guardarPresupuestoStorage();
+    }
+  }, [isValidPresupuesto]);
 
   const handleNuevoPresupuesto = presupuesto => {
     // console.log('Desde app', presupuesto);
