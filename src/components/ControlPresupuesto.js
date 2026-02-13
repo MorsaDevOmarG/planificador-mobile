@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import globalStyles from '../styles';
 import { formatearCantidad } from '../helpers';
 
-const ControlPresupuesto = ({ presupuesto, gastos }) => {
+const ControlPresupuesto = ({ presupuesto, gastos, resetearApp }) => {
   const [disponible, setDisponible] = useState(0);
   const [gastado, setGastado] = useState(0);
   const [porcentaje, setPorcentaje] = useState(0);
@@ -53,6 +53,10 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
       </View>
 
       <View style={styles.contenedorTexto}>
+        <Pressable style={styles.boton} onLongPress={resetearApp}>
+          <Text style={styles.textoBoton}>Reinicar App</Text>
+        </Pressable>
+
         <Text style={styles.valor}>
           <Text style={styles.label}>Presupuesto: {''} </Text>
 
@@ -111,6 +115,20 @@ const styles = StyleSheet.create({
   imagen: {
     width: 250,
     height: 250,
+  },
+
+  boton: {
+    backgroundColor: '#DB2777',
+    padding: 10,
+    marginBottom: 40,
+    borderRadius: 5,
+  },
+
+  textoBoton: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 
   contenedorTexto: {
