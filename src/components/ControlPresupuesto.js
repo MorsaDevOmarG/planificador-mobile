@@ -73,7 +73,8 @@ const ControlPresupuesto = ({ presupuesto, gastos }) => {
         </Text>
 
         <Text style={styles.valor}>
-          <Text style={styles.label}>Porcentaje: {''}</Text>%{porcentaje}
+          <Text style={styles.label}>Porcentaje: {''}</Text>%
+          {porcentaje.toFixed(2)}
         </Text>
       </View>
     </View>
