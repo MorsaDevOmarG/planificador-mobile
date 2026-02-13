@@ -66,6 +66,21 @@ const App = () => {
     }
   }, [isValidPresupuesto]);
 
+  useEffect(() => {
+    const guardarGastosStorage = async () => {
+      try {
+        await AsyncStorage.setItem(
+          'planificador_gastos',
+          JSON.stringify(gastos),
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    guardarGastosStorage();
+  }, [gastos]);
+
   const handleNuevoPresupuesto = presupuesto => {
     // console.log('Desde app', presupuesto);
 
