@@ -29,6 +29,9 @@
         - **_npm i react-native-reanimated@3.0.0-rc.0_**
 1. Svg
    - **_npm i react-native-svg_**
+1. Async Storage
+
+- Es como _LocalStorage_ pero en _mobile_-
 
 ### Tecnologías
 
